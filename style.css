@@ -1,0 +1,930 @@
+/* ==================================== */
+/* 1. Global Styles & Variables */
+/* ==================================== */
+
+:root {
+    --color-primary: #FF0000;
+    --color-secondary: #000000;
+    --color-background: #F5F5F5;
+    --color-text-dark: #333333;
+    --color-text-light: #FFFFFF;
+    --font-heading: 'Georgia', serif;
+    --font-body: 'Arial', sans-serif;
+    --spacing-large: 2.5rem;
+    --spacing-medium: 1.5rem;
+    --spacing-small: 1rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--color-text-dark);
+    background-color: var(--color-background);
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-small);
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primary); /* Links are red */
+    transition: color 0.3s ease, transform 0.3s ease; /* Added transform for movement */
+}
+
+a:hover {
+    color: var(--color-secondary); /* Black hover for contrast */
+}
+
+/* Call-to-Action Buttons - UPDATED PADDING AND FONT-SIZE */
+.cta-button {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    padding: 12px 25px; /* Updated from 0.75rem 1.5rem to 12px 25px */
+    border: 2px solid var(--color-primary);
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.1em; /* Added requested font size */
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+    color: var(--color-text-light);
+    transform: translateY(-2px); /* Subtle lift on CTA hover */
+}
+
+section {
+    padding: var(--spacing-large) 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* -------------------------------------- */
+
+/* 2. Header & Navigation (Common) */
+
+header {
+    background-color: var(--color-secondary); /* Black header */
+    color: var(--color-text-light);
+    padding: var(--spacing-medium) 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 5px solid var(--color-primary); /* Red line accent */
+}
+
+.logo h1 {
+    color: var(--color-text-light);
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: transform 0.3s ease; /* Added transition for logo */
+}
+
+.logo h1:hover {
+    transform: translateY(-2px); /* Subtle lift on logo hover */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: var(--spacing-medium);
+}
+
+nav ul li a {
+    color: var(--color-text-light);
+    font-weight: bold;
+    padding: 0.5rem 0.25rem;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--color-primary);
+    transform: translateY(-2px); /* Subtle lift on nav link hover */
+}
+
+/* Active Page Indicator */
+nav ul li a.active {
+    color: var(--color-primary);
+    transform: none; /* Keep active link from moving */
+}
+
+nav ul li a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-primary);
+}
+
+/* -------------------------------------- */
+
+/* 3. Footer (Common) */
+
+footer {
+    background-color: var(--color-secondary); /* Black footer */
+    color: var(--color-text-light);
+    text-align: center;
+    padding: var(--spacing-medium) 5%;
+    margin-top: var(--spacing-large);
+}
+
+.footer-content a {
+    color: var(--color-primary);
+    margin: 0 0.5rem;
+    display: inline-block; /* Essential for transform to work */
+}
+
+.footer-content a:hover {
+    color: var(--color-text-light);
+    transform: translateY(-2px); /* Subtle lift on social link hover */
+}
+
+/* -------------------------------------- */
+
+/* 4. Home Page Specific Styles */
+
+#hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-text-light); /* White background for hero */
+    min-height: 70vh;
+}
+
+.hero-content {
+    flex: 1;
+    padding-right: var(--spacing-large);
+    max-width: 50%;
+}
+
+.hero-content h2 {
+    font-size: 3.5rem;
+    color: var(--color-primary); /* Red headline */
+    margin-bottom: var(--spacing-medium);
+}
+
+.hero-media {
+    flex: 1;
+    min-height: 400px;
+    background-color: var(--color-background); 
+    /* Placeholder for Image/Video/Animation */
+    border: 5px solid var(--color-secondary); /* Black frame */
+    box-shadow: 10px 10px 0 var(--color-primary); /* Red shadow animation effect */
+    overflow: hidden; /* Ensures image doesn't bleed out of the box shadow area */
+}
+
+/* NEW: Styles for the <img> tag inside the hero-media div */
+.hero-media .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This makes the image cover the div without distortion */
+    display: block; /* Removes any extra space below the image */
+}
+
+
+/* Featured Products */
+#featured-products {
+    text-align: center;
+    background-color: var(--color-background);
+}
+
+#featured-products h3 {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-large);
+}
+
+.product-list {
+    display: flex;
+    justify-content: space-around;
+    gap: var(--spacing-medium);
+}
+
+.product-card {
+    background-color: var(--color-text-light);
+    border: 1px solid #ccc;
+    padding: var(--spacing-medium);
+    border-radius: 8px;
+    flex: 1;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px); /* Lift animation on hover (already present) */
+    border-color: var(--color-primary);
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.2);
+}
+
+.product-card .cupcake-image {
+    /* Adjustments for the <img> tag inside the product card */
+    width: 100%; 
+    height: 150px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: var(--spacing-small);
+}
+
+/* Quick Info */
+#quick-info {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    border-top: 1px solid #ddd;
+    padding-top: var(--spacing-medium);
+}
+
+.info-box {
+    flex: 1;
+    padding: var(--spacing-small);
+}
+
+.info-box h4 {
+    color: var(--color-primary);
+}
+
+/* -------------------------------------- */
+
+/* 5. About Page Specific Styles */
+
+/* New styles for images/icons added in previous steps */
+.about-media .about-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    border-radius: 10px;
+    display: block;
+}
+
+.statement-card .icon {
+    height: 60px;
+    width: 60px;
+    margin: 0 auto var(--spacing-small) auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.statement-card .icon .statement-icon {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+#about-intro h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-large);
+}
+
+.about-media {
+    width: 100%;
+    height: 350px;
+    background-color: var(--color-secondary); /* Black background for visual */
+    margin-bottom: var(--spacing-large);
+    border-radius: 10px;
+}
+
+#history p {
+    margin-bottom: var(--spacing-medium);
+}
+
+#mission-vision {
+    display: flex;
+    gap: var(--spacing-medium);
+    margin-top: var(--spacing-large);
+}
+
+.statement-card {
+    flex: 1;
+    padding: var(--spacing-medium);
+    border-radius: 8px;
+    text-align: center;
+    border: 2px solid var(--color-primary);
+    background-color: var(--color-text-light);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.statement-card h3 {
+    color: var(--color-primary);
+}
+
+/* -------------------------------------- */
+
+/* 6. Menu Page Specific Styles */
+
+#menu-hero {
+    text-align: center;
+    background-color: var(--color-text-light);
+    padding-bottom: var(--spacing-medium);
+}
+
+#menu-categories {
+    text-align: center;
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: var(--spacing-small);
+    margin-bottom: var(--spacing-medium);
+}
+
+.category-links .category-btn {
+    background-color: var(--color-background);
+    color: var(--color-secondary);
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    border: 1px solid var(--color-secondary);
+    border-radius: 20px;
+    transition: background-color 0.3s, transform 0.3s ease;
+}
+
+.category-links .category-btn.active,
+.category-links .category-btn:hover {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    border-color: var(--color-primary);
+    transform: translateY(-2px); /* Subtle lift on category button hover */
+}
+
+.cupcake-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-large);
+    margin-top: var(--spacing-medium);
+}
+
+.cupcake-card {
+    /* Added to ensure this selector has its closing brace if it was missing */
+    background-color: var(--color-text-light);
+    padding: var(--spacing-small);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.cupcake-card .cupcake-image {
+    height: 200px;
+    width: 100%;
+    object-fit: cover; /* Added for image in menu cards */
+    display: block; /* Added for image in menu cards */
+    margin-bottom: var(--spacing-small);
+    border-radius: 5px;
+    border: 2px solid var(--color-secondary);
+    /* New: Added pointer for lightbox click hint */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* New: Hover effect to hint at lightbox functionality */
+.cupcake-card .cupcake-image:hover {
+    transform: scale(1.03);
+}
+
+.cupcake-card .price {
+    font-weight: bold;
+    color: var(--color-primary);
+    margin: 0.5rem 0;
+}
+
+.add-to-cart-form {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.quantity-input {
+    width: 60px;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.add-btn {
+    flex: 1;
+    background-color: var(--color-secondary);
+    color: var(--color-text-light);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-btn:hover {
+    background-color: var(--color-primary);
+}
+
+#current-order-summary {
+    text-align: center;
+    padding: var(--spacing-large) 0;
+    margin-top: var(--spacing-large);
+    border-top: 2px solid var(--color-secondary);
+}
+
+/* NEW: Styles for the "Proceed to Checkout" callout */
+.checkout-callout {
+    text-align: center;
+    padding: 40px 0; /* Add some space above and below the button */
+    margin-top: 20px;
+    border-top: 1px solid #eee; /* Optional separator line */
+}
+
+/* -------------------------------------- */
+
+/* 7. Checkout Page Specific Styles & MODAL */
+
+#checkout-container {
+    display: flex;
+    gap: var(--spacing-large);
+    flex-wrap: wrap;
+}
+
+#order-summary, #checkout-form {
+    flex: 1;
+    min-width: 300px;
+    background-color: var(--color-text-light);
+    padding: var(--spacing-medium);
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--spacing-medium);
+}
+
+.cart-table th, .cart-table td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+.cart-table th {
+    background-color: var(--color-background);
+    color: var(--color-secondary);
+}
+
+.cart-table .summary-row td {
+    border-bottom: none;
+}
+
+.cart-table .total-row td {
+    border-top: 2px solid var(--color-primary);
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--color-secondary);
+}
+
+/* Styling for the Secondary "Clear Cart" Button */
+.secondary-cta-button {
+    display: block; /* Make it a block element to take full width */
+    width: 100%;
+    margin-top: var(--spacing-small);
+    background-color: var(--color-background); /* Use the light background color */
+    color: var(--color-secondary); /* Dark text */
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--color-secondary); /* Black border */
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.secondary-cta-button:hover {
+    background-color: var(--color-primary); /* Red hover background */
+    border-color: var(--color-primary);
+    color: var(--color-text-light); /* White text */
+    transform: translateY(-2px);
+}
+
+/* Form Styles */
+.section-block {
+    border: 1px solid #ccc;
+    padding: var(--spacing-medium);
+    margin-bottom: var(--spacing-medium);
+    border-radius: 6px;
+}
+
+.section-block legend {
+    font-weight: bold;
+    color: var(--color-primary);
+    padding: 0 10px;
+}
+
+.form-group {
+    margin-bottom: var(--spacing-small);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input, .form-group select, #contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-row {
+    display: flex;
+    gap: var(--spacing-small);
+}
+
+.form-row .half-width {
+    flex: 1;
+}
+
+.submit-order-btn {
+    width: 100%;
+    margin-top: var(--spacing-medium);
+    font-size: 1.2rem;
+    padding: 1rem;
+}
+
+/* --- Modal Styles for Success Message (Checkout Page) --- */
+.modal {
+    display: none; /* Hidden by default, script changes this to 'flex' */
+    position: fixed; 
+    z-index: 2000; /* High z-index to cover everything */
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    justify-content: center;
+    align-items: center;
+    overflow: auto; 
+}
+
+.modal-content {
+    background-color: var(--color-text-light); 
+    margin: 15% auto; 
+    padding: var(--spacing-large); 
+    border: 5px solid var(--color-primary); 
+    border-radius: 10px;
+    width: 80%; 
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+}
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+.close-btn {
+    color: var(--color-secondary); 
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: var(--color-primary);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#modal-total {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--color-primary);
+    margin: 10px 0 20px 0;
+}
+
+/* -------------------------------------- */
+
+/* 8. Contact Page Specific Styles */
+
+/* Styles for the image inside the map container */
+.map-container .map-image-placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fills the container */
+    border-radius: 6px; /* Slightly less than the parent container border to fit nicely */
+    display: block;
+}
+
+#contact-info-map {
+    display: flex;
+    gap: var(--spacing-large);
+    margin-bottom: var(--spacing-large);
+}
+
+.contact-details {
+    flex: 1;
+}
+
+.map-container {
+    flex: 1;
+    height: 400px;
+    background-color: var(--color-secondary); /* Black map placeholder */
+    color: var(--color-text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: 4px solid var(--color-primary);
+}
+
+.info-item {
+    margin-bottom: var(--spacing-medium);
+    border-left: 5px solid var(--color-primary);
+    padding-left: var(--spacing-small);
+}
+
+.info-item h4 {
+    transition: transform 0.3s ease;
+}
+
+.info-item h4:hover {
+    transform: translateX(5px); /* Move item title slightly right on hover */
+}
+
+#contact-form-section {
+    background-color: var(--color-text-light);
+    padding: var(--spacing-medium);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+#contact-form textarea {
+    resize: vertical;
+}
+
+/* -------------------------------------- */
+
+/* 9. Responsiveness (Mobile First) */
+
+@media (max-width: 768px) {
+    /* Header adjustments */
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        margin-top: var(--spacing-small);
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    nav ul li {
+        margin: 0.5rem;
+    }
+    
+    /* Home Page */
+    #hero {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-content {
+        max-width: 100%;
+        padding: 0;
+        margin-bottom: var(--spacing-medium);
+    }
+    
+    .hero-media {
+        width: 100%;
+        min-height: 250px;
+    }
+
+    .product-list, #quick-info, #mission-vision, #checkout-container, #contact-info-map {
+        flex-direction: column;
+    }
+    
+    /* Menu Page */
+    .category-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .category-links .category-btn {
+        margin: 0.3rem;
+    }
+    
+    .add-to-cart-form {
+        justify-content: center;
+    }
+}
+
+/* -------------------------------------- */
+
+/* 10. Animation & Utility Styles */
+
+/* Container for the pop-up animation */
+#cupcake-shower-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allows clicks to pass through to the elements below */
+    overflow: hidden;
+    z-index: 1000; /* Ensure it's on top of everything */
+}
+
+/* Individual Cupcake Element Styles */
+.cupcake-pop {
+    position: absolute;
+    width: 30px; /* Size of the cupcake */
+    height: 30px;
+    background-image: url('images/cupcake.png'); /* You'll need an icon image */
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    /* Animation definition */
+    animation: pop-and-fall 1.5s ease-out forwards;
+}
+
+/* Define the animation keyframes */
+@keyframes pop-and-fall {
+    0% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg) scale(0.5);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateY(-100px) rotate(180deg) scale(1.2); /* Pop up high */
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(500px) rotate(360deg) scale(0.1); /* Fall off screen */
+    }
+}
+
+/* -------------------------------------- */
+
+/* 11. GALLERY LIGHTBOX (Menu Page) */
+
+/* The Lightbox Modal (background) */
+.lightbox {
+    display: none; 
+    position: fixed; 
+    z-index: 3000; /* Higher than other modals/elements */
+    padding-top: 50px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.9); /* Dark, transparent background */
+}
+
+/* Modal Content (Image) */
+.lightbox-content {
+    margin: auto;
+    display: block;
+    width: 90%;
+    max-width: 800px; 
+    max-height: 85vh; 
+    object-fit: contain; 
+    border-radius: 5px;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+/* Caption of Image */
+#lightbox-caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 800px;
+    text-align: center;
+    color: var(--color-text-light); /* White text for contrast */
+    padding: 10px 0;
+    font-size: 1.2rem;
+}
+
+/* The Close Button */
+.lightbox-close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: var(--color-text-light); /* White */
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus {
+    color: var(--color-primary); /* Red hover */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Zoom Animation */
+@keyframes zoom {
+    from {transform:scale(0.1)} 
+    to {transform:scale(1)}
+}
+/* Map Styling for contact.html */
+#map {
+    height: 400px; /* Set a height for the map container */
+    width: 100%; /* Ensure it takes full width */
+    margin-bottom: 20px;
+    border: 2px solid var(--primary-color); /* Optional: Adds a nice border */
+    border-radius: 8px;
+}
+.error-message {
+    color: var(--color-primary); /* Use red for errors */
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-top: 5px;
+    height: 1.2em; /* Reserve space to prevent layout jump */
+}
+/* Styling for Form Validation Error Messages */
+.error-message {
+    color: var(--color-primary); /* Use red for errors */
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-top: 5px;
+    height: 1.2em; /* Reserve space to prevent layout jump */
+}
+/* =======================================
+   12. Subtle Repeating Background Pattern (Revised)
+   ======================================= */
+
+body {
+    background-color: var(--color-background); 
+    
+    /* Apply all images as one repeating pattern */
+    background-image: 
+        url('images/cupcake\ sillhouette.jpg'),
+        url('images/whisk.png'),
+        url('images/rolling\ pin.png.'),
+        url('images/chef\'s\ hat.png');
+
+    /* Size: Mini Silhouettes */
+    background-size: 
+        80px, 
+        60px, 
+        50px, 
+        70px; 
+        
+    /* Position: Stagger the starting point within the first repeat area (e.g., 300x300px block) */
+    background-position: 
+        0px 0px,        /* Cupcake */
+        150px 75px,     /* Whisk */
+        250px 10px,     /* Rolling Pin */
+        30px 180px;     /* Chef Hat */
+
+    /* Repeat the pattern, but ensure the icons are spaced out */
+    background-repeat: repeat; 
+    
+    /* The key to spacing: Define the overall repeat size of the pattern block. 
+       If this is too small, they look cluttered. Too large, they look sparse. */
+    background-size: 400px 400px; /* Repeat the entire set of four icons every 400px */
+    
+    background-attachment: fixed;
+    position: relative;
+}
+
+/* Fading Effect using a Pseudo-Element Overlay (Ensures text readability) */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* FADE: Use a high alpha channel (0.95) for subtlety */
+    background-color: rgba(245, 245, 245, 0.95); 
+    
+    z-index: -1; 
+}

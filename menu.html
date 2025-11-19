@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | Max's Cupcake Studio</title>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>Max's Cupcake Studio</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="menu.html" class="active">Menu</a></li>
+                <li><a href="checkout.html">Checkout</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="menu-hero">
+            <h2>Our Handcrafted Flavors</h2>
+            <p>A fresh batch of creativity, baked daily just for you.</p>
+        </section>
+
+        <section id="menu-categories">
+            <h3>Explore By Category</h3>
+            <div class="category-links">
+                <a href="#" class="category-btn active" data-category="all">All Cupcakes</a>
+                <a href="#" class="category-btn" data-category="classic">Classics</a>
+                <a href="#" class="category-btn" data-category="gourmet">Gourmet Selections</a>
+                <a href="#" class="category-btn" data-category="seasonal">Seasonal</a>
+            </div>
+        </section>
+
+        <section id="cupcake-listings">
+            <div class="cupcake-grid">
+                            </div>
+        </section>
+        
+        <div class="checkout-callout">
+             <a href="checkout.html" class="cta-button">Proceed to Checkout &rarr;</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Max's Cupcake Studio. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#">Instagram</a> | <a href="#">Facebook</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="cupcake-shower-container"></div> 
+    
+    <div id="myLightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-image" alt="Cupcake Image in Lightbox">
+        <div id="lightbox-caption"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
