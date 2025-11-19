@@ -1,0 +1,11 @@
+# Block all known crawlers from accessing the temporary/sensitive pages
+User-agent: *
+Disallow: /temp/
+Disallow: /checkout-success.html
+
+# Allow all known crawlers to access all pages
+User-agent: *
+Allow: /
+
+# Specify the location of the Sitemap file
+Sitemap: https://maxscupcakestudio.com/sitemap.xml
